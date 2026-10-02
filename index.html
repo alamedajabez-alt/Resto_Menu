@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Gourmet Castle | Menu</title>
+	<meta name="description" content="The Gourmet Castle menu: appetizers, salads, main courses and desserts.">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Gloock&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<section class="main">
+		<p class="hint">Tap the cover to open the menu. Tap an underlined dish to read its recipe.</p>
+
+		<div id="rm-container" class="rm-container">
+			<div class="rm-wrapper">
+
+				<div class="rm-cover">
+					<div class="rm-front">
+						<div class="rm-content">
+							<div class="rm-logo"></div>
+							<h2>Gourmet castle</h2>
+							<h3>Fine dining and gourmet takeaway</h3>
+
+							<button type="button" class="rm-button-open">View the menu</button>
+
+							<div class="rm-info">
+								<p>
+									<strong>name of the resto</strong><br>
+									246 Wonderful Paradise Ln.<br>
+									Pasadena, CA 91101<br>
+									<strong>Phone</strong> 626.511.1170<br>
+									<strong>Fax</strong> 626.992.1020
+								</p>
+							</div>
+							<p class="rm-note">ask about today's soup</p>
+						</div>
+					</div>
+
+					<div class="rm-back">
+						<div class="rm-content">
+							<h4>Appetizers</h4>
+							<dl>
+								<dt>Bella's Artichokes</dt>
+								<dd>Roasted artichokes with chipotle aioli and cream cheese</dd>
+
+								<dt>Bruschetta Blue Delight</dt>
+								<dd>Blue cheese and citrus bruschetta</dd>
+
+								<dt>Pomme Dulse</dt>
+								<dd>Baked potatoes with crisped dulse</dd>
+
+								<dt><a href="#" class="rm-viewdetails" data-thumb="images/1.jpg">Green Love Crostini</a></dt>
+								<dd>Crostini with young pecorino, grilled figs and arugula &amp; mint pesto</dd>
+
+								<dt>Focaccia di Carciofi</dt>
+								<dd>Artichoke focaccia with fresh thyme</dd>
+							</dl>
+
+							<h4>Salads &amp; more</h4>
+							<dl>
+								<dt>Green Delight</dt>
+								<dd>Watercress, frisee and avocado salad</dd>
+
+								<dt><a href="#" class="rm-viewdetails" data-thumb="images/13.jpg">Gourmet Yam Taohu</a></dt>
+								<dd>Thai tofu salad yam taohu</dd>
+
+								<dt>Panini Deluxe</dt>
+								<dd>Buffalo mozzarella basil panini</dd>
+							</dl>
+						</div>
+						<div class="rm-overlay"></div>
+					</div>
+				</div><!-- /rm-cover -->
+
+				<div class="rm-middle">
+					<div class="rm-inner">
+						<div class="rm-content">
+							<div class="rm-filters" role="group" aria-label="Filter the menu">
+								<button type="button" data-filter="all" aria-pressed="true">All dishes</button>
+								<button type="button" data-filter="spicy" aria-pressed="false">Spicy</button>
+								<button type="button" data-filter="pick" aria-pressed="false">Chef's picks</button>
+							</div>
+
+							<h4>Main courses</h4>
+							<dl>
+								<dt data-tags="pick"><a href="#" class="rm-viewdetails" data-thumb="images/11.jpg">Crispy Gnocchi with Arugula</a></dt>
+								<dd>Pan-fried potato gnocchi with arugula salad</dd>
+
+								<dt data-tags="spicy"><span>Sea Palm Spicy Peanut Curry</span></dt>
+								<dd>Tender sea palm noodles, seasoned vegetables, spicy peanut curry and tempeh fennel croquettes</dd>
+
+								<dt><a href="#" class="rm-viewdetails" data-thumb="images/8.jpg">Lentil Caviar &amp; Arugula</a></dt>
+								<dd>Black lentil curry with arugula salad, caramelized shallots and roasted garlic</dd>
+
+								<dt>Tamari-Maple Glazed Tofu</dt>
+								<dd>Wasabi emulsion, sesame seeds and scallions</dd>
+
+								<dt>Maple Barbeque Tofu</dt>
+								<dd>Grilled marinated tofu, maple barbeque sauce, tahini slaw, grilled seasonal vegetables and mashed potatoes</dd>
+
+								<dt data-tags="pick"><a href="#" class="rm-viewdetails" data-thumb="images/4.jpg">Luxur Oyster</a></dt>
+								<dd>King oyster mushroom with roasted cherries and sage</dd>
+
+								<dt data-tags="spicy"><a href="#" class="rm-viewdetails" data-thumb="images/3.jpg">Rigatoni di Cavolfiore</a></dt>
+								<dd>Rigatoni with roasted cauliflower and spicy tomato sauce</dd>
+
+								<dt><a href="#" class="rm-viewdetails" data-thumb="images/14.jpg">Saffron Chana Secret</a></dt>
+								<dd>Saffron chickpea stew with grilled porcini mushrooms</dd>
+							</dl>
+						</div>
+						<div class="rm-overlay"></div>
+					</div>
+				</div><!-- /rm-middle -->
+
+				<div class="rm-right">
+					<div class="rm-front"></div>
+
+					<div class="rm-back">
+						<button type="button" class="rm-close">Close menu</button>
+						<div class="rm-content">
+							<h4>Desserts</h4>
+							<dl>
+								<dt data-tags="pick"><a href="#" class="rm-viewdetails" data-thumb="images/5.jpg">French Plum Crepes</a></dt>
+								<dd>Crepes with roasted french plums, yogurt &amp; honey</dd>
+
+								<dt><a href="#" class="rm-viewdetails" data-thumb="images/6.jpg">Butterscotch Pudding</a></dt>
+								<dd>Butterscotch pudding with bittersweet ganache and caramelized white chocolate crispies</dd>
+
+								<dt><a href="#" class="rm-viewdetails" data-thumb="images/12.jpg">Chocolate Gâteau de Crêpes</a></dt>
+								<dd>Gâteau de crêpes with chocolate pastry cream and dulce de leche</dd>
+
+								<dt><a href="#" class="rm-viewdetails" data-thumb="images/10.jpg">Dutch Baby with Sauteed Apples</a></dt>
+								<dd>Giant oven-baked pancake with sauteed apples</dd>
+
+								<dt><a href="#" class="rm-viewdetails" data-thumb="images/7.jpg">Blueberry Napoleon</a></dt>
+								<dd>Blueberry Napoleon with crème fraîche and raspberry powder</dd>
+
+								<dt><a href="#" class="rm-viewdetails" data-thumb="images/2.jpg">Rings of Saturn</a></dt>
+								<dd>Saturn peach on challah french toast</dd>
+
+								<dt><a href="#" class="rm-viewdetails" data-thumb="images/9.jpg">Classic Atayef</a></dt>
+								<dd>Syrian ricotta-filled dessert pancakes</dd>
+							</dl>
+							<div class="rm-order">
+								<p><strong>Want us to cater your event?</strong> Call us on <strong>626.511.1170</strong> and we'll help you find a venue and plan the day.</p>
+							</div>
+						</div>
+					</div>
+				</div><!-- /rm-right -->
+
+			</div><!-- /rm-wrapper -->
+		</div><!-- /rm-container -->
+	</section>
+
+	<p class="credits">
+	</p>
+
+	<script src="recipes.js"></script>
+	<script src="menu.js"></script>
+</body>
+</html>

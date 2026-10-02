@@ -1,0 +1,319 @@
+/* Gourmet Castle menu. Same 3D fold as the Codrops original, new look. */
+
+:root {
+	--table: #1b2a23;
+	--paper: #f2f1e6;
+	--ink: #1d2b22;
+	--soft: #4b5a50;
+	--saffron: #c98f14;
+	--plum: #8a2f4a;
+	--display: 'Gloock', Georgia, serif;
+	--body: 'Hanken Grotesk', system-ui, sans-serif;
+	--hand: 'Caveat', cursive;
+}
+
+* { box-sizing: border-box; }
+body {
+	margin: 0;
+	min-height: 100vh;
+	font: 400 14px/1.5 var(--body);
+	color: var(--ink);
+	background: radial-gradient(ellipse at 50% 30%, #27392f 0%, var(--table) 70%);
+	-webkit-font-smoothing: antialiased;
+}
+h2, h3, h4, h5, p, dl, dt, dd { margin: 0; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--saffron); outline-offset: 3px; }
+
+.main { width: 95%; margin: 0 auto; padding-top: 60px; }
+.hint { text-align: center; color: #b9c4bb; font-size: 13px; margin: 0 0 40px; }
+.credits { text-align: center; color: #8d9b91; font-size: 12px; padding: 0 20px 40px; max-width: 640px; margin: 0 auto; }
+.credits a { color: #b9c4bb; }
+
+/* The book */
+.rm-container {
+	width: 33%;
+	max-width: 400px;
+	height: 800px;
+	margin: 0 auto 40px;
+	position: relative;
+	perspective: 1600px;
+}
+.rm-wrapper,
+.rm-wrapper > div {
+	position: absolute;
+	inset: 0;
+	text-align: center;
+	transform-style: preserve-3d;
+	transition: all 0.7s cubic-bezier(.5, .05, .25, 1), height 0s;
+}
+.rm-cover { z-index: 100; transform-origin: 0 50%; transition-delay: 0.2s; }
+.rm-middle { z-index: 50; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55); }
+.rm-right { z-index: 60; transform-origin: 100% 50%; transition-delay: 0s; }
+
+.rm-wrapper > div > div {
+	position: absolute;
+	inset: 0;
+	padding: 30px;
+	background: var(--paper);
+	box-shadow:
+		inset 0 0 0 12px var(--paper),
+		inset 0 0 0 13px var(--ink),
+		inset 0 0 0 16px var(--paper),
+		inset 0 0 0 17px var(--saffron);
+}
+.rm-front, .rm-back { backface-visibility: hidden; }
+.rm-back { transform: rotateY(-180deg); }
+
+/* Soft shade near each fold */
+.rm-overlay {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	background: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.07) 100%);
+}
+.rm-middle .rm-overlay { background: linear-gradient(to right, rgba(0,0,0,0) 60%, rgba(0,0,0,0.07) 100%); }
+
+.rm-content { padding: 14px 12px; height: 100%; }
+
+/* Type */
+.rm-content h2, .rm-content h4, .rm-modal h5 { font-family: var(--display); font-weight: 400; }
+.rm-content h2 { font-size: 34px; line-height: 1.05; letter-spacing: 0.5px; }
+.rm-content h3 {
+	font: 500 14px/1.5 var(--body);
+	color: var(--soft);
+	margin: 18px 0 30px;
+	padding-top: 14px;
+	border-top: 3px double var(--ink);
+}
+.rm-content h4 {
+	font-size: 22px;
+	margin-bottom: 14px;
+	padding-bottom: 6px;
+	border-bottom: 1px solid var(--ink);
+}
+.rm-content h4:not(:first-child) { margin-top: 26px; }
+
+.rm-logo {
+	width: 110px;
+	height: 110px;
+	margin: 18px auto 22px;
+	border-radius: 50%;
+	background: #323b4c url(../images/restaurant.jpg) center / cover;
+	box-shadow: 0 0 0 4px var(--paper), 0 0 0 5px var(--ink), 0 0 0 8px var(--paper), 0 0 0 9px var(--saffron);
+	transform: rotate(-3deg);
+}
+
+.rm-button-open {
+	display: inline-block;
+	font: 400 20px var(--display);
+	padding: 10px 26px;
+	color: var(--paper);
+	background: var(--ink);
+	border-radius: 3px;
+	box-shadow: 3px 3px 0 var(--saffron);
+	transition: transform 0.15s, box-shadow 0.15s;
+}
+.rm-button-open:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--saffron); }
+.rm-button-open:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--saffron); }
+
+.rm-info { margin-top: 28px; font-size: 13px; color: var(--soft); }
+.rm-info strong { color: var(--ink); font-weight: 600; }
+
+/* Scribbled note, the one hand-made detail on the cover */
+.rm-note {
+	position: absolute;
+	right: 34px;
+	bottom: 52px;
+	font: 700 25px/1 var(--hand);
+	color: var(--plum);
+	transform: rotate(-5deg);
+	text-align: center;
+}
+.rm-note:after {
+	content: '';
+	display: block;
+	height: 5px;
+	margin-top: 4px;
+	background: radial-gradient(ellipse at center, var(--plum) 0 40%, transparent 42%) 0 0 / 12px 5px repeat-x;
+	opacity: 0.6;
+}
+
+/* Dishes */
+.rm-content dl { text-align: left; }
+.rm-content dt { font-weight: 600; font-size: 15px; transition: opacity 0.25s; }
+.rm-content dd {
+	font-size: 13px;
+	line-height: 1.4;
+	color: var(--soft);
+	padding: 2px 0 14px;
+	transition: opacity 0.25s;
+}
+.rm-dim { opacity: 0.22; }
+
+a.rm-viewdetails {
+	text-decoration: underline;
+	text-decoration-color: var(--saffron);
+	text-decoration-thickness: 2px;
+	text-underline-offset: 3px;
+}
+a.rm-viewdetails:hover { color: var(--plum); }
+
+/* Tags on dishes */
+dt[data-tags~="pick"]:after {
+	content: "chef's pick";
+	display: inline-block;
+	margin-left: 8px;
+	padding: 0 6px;
+	font: 700 16px/1.2 var(--hand);
+	color: var(--plum);
+	border: 1.5px solid var(--plum);
+	border-radius: 3px;
+	transform: rotate(-3deg);
+	vertical-align: 1px;
+}
+dt[data-tags~="spicy"]:before {
+	content: '';
+	display: inline-block;
+	width: 8px;
+	height: 8px;
+	margin-right: 6px;
+	border-radius: 50%;
+	background: #c2412b;
+	vertical-align: 1px;
+}
+
+/* Filter chips */
+.rm-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+.rm-filters button {
+	padding: 3px 12px;
+	font-size: 13px;
+	border: 1px solid var(--ink);
+	border-radius: 99px;
+	transition: background 0.15s, color 0.15s;
+}
+.rm-filters button:hover { background: rgba(29, 43, 34, 0.08); }
+.rm-filters button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.rm-legend { font-size: 12px; color: var(--soft); text-align: left; margin: -8px 0 16px; }
+
+.rm-order p {
+	margin-top: 22px;
+	padding: 12px;
+	text-align: left;
+	background: rgba(201, 143, 20, 0.14);
+	border-left: 3px solid var(--saffron);
+}
+
+.rm-close {
+	position: absolute;
+	top: -26px;
+	right: 30px;
+	padding: 3px 12px;
+	font-size: 12px;
+	color: var(--ink);
+	background: var(--saffron);
+	border-radius: 3px 3px 0 0;
+	opacity: 0;
+	transition: all 0.1s;
+}
+.rm-container.rm-open .rm-close { opacity: 1; transition: all 0.3s ease 0.8s; }
+.rm-container.rm-open .rm-wrapper > div { box-shadow: 0 6px 14px -6px rgba(0, 0, 0, 0.7); }
+
+/* Dish detail card */
+.rm-modal {
+	position: absolute;
+	z-index: 10000;
+	top: 50%;
+	width: 120%;
+	margin-left: -10%;
+	padding: 40px;
+	text-align: left;
+	background: var(--paper);
+	box-shadow:
+		inset 0 0 0 12px var(--paper),
+		inset 0 0 0 13px var(--ink),
+		inset 0 0 0 16px var(--paper),
+		inset 0 0 0 17px var(--saffron),
+		0 14px 40px rgba(0, 0, 0, 0.5);
+	opacity: 0;
+	pointer-events: none;
+	transform: translateZ(1000px);
+	transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+}
+.rm-modal h5 { font-size: 22px; line-height: 1.15; margin-bottom: 8px; }
+.rm-modal p { color: var(--soft); font-size: 14px; }
+.rm-modal .rm-thumb {
+	float: left;
+	width: 100px;
+	height: 100px;
+	margin: 0 18px 0 0;
+	background: center / cover no-repeat;
+	border-radius: 3px;
+	transform: rotate(-2deg);
+	box-shadow: 0 0 0 4px #fff, 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+.rm-modal a {
+	float: right;
+	clear: both;
+	margin-top: 14px;
+	font-weight: 600;
+	text-decoration-color: var(--saffron);
+	text-decoration-thickness: 2px;
+	text-underline-offset: 3px;
+}
+.rm-close-modal {
+	position: absolute;
+	top: 24px;
+	right: 24px;
+	width: 28px;
+	height: 28px;
+	font-size: 20px;
+	line-height: 26px;
+	border-radius: 50%;
+	text-align: center;
+	background: var(--ink);
+	color: var(--paper);
+}
+
+.rm-recipe { clear: both; padding-top: 16px; max-height: 300px; overflow-y: auto; font-size: 13px; }
+.rm-recipe h6 { font: 400 17px var(--display); margin: 12px 0 4px; }
+.rm-recipe ul, .rm-recipe ol { margin: 0; padding-left: 20px; color: var(--soft); }
+.rm-recipe li { margin-bottom: 3px; }
+.rm-recipe li::marker { color: var(--saffron); font-weight: 600; }
+.rm-recipe .rm-meta { font: 700 19px var(--hand); color: var(--plum); }
+
+/* Open / zoom states */
+.rm-container.rm-open .rm-cover { transform: rotateY(-180deg); transition-delay: 0s; }
+.rm-container.rm-open .rm-right { transform: rotateY(180deg); transition-delay: 0.2s; }
+.rm-container.rm-in .rm-cover { transform: rotateY(-150deg); }
+.rm-container.rm-in .rm-right { transform: rotateY(150deg); }
+.rm-container.rm-in .rm-wrapper { transform: translateZ(-500px); }
+.rm-container.rm-in .rm-cover,
+.rm-container.rm-in .rm-right,
+.rm-container.rm-nodelay .rm-right { transition-delay: 0s; }
+.rm-container.rm-in .rm-modal { transform: translateZ(0); opacity: 1; pointer-events: auto; }
+
+@media (max-height: 900px) and (min-width: 961px) { .rm-container { height: 840px; } }
+@media (max-width: 1110px) { .rm-container { height: 860px; } }
+
+/* Small screens: no 3D, pages stack like a long menu */
+@media (max-width: 960px) {
+	.main { padding-top: 30px; }
+	.rm-container { width: 100%; height: auto; max-width: 460px; perspective: none; }
+	.rm-wrapper, .rm-wrapper > div, .rm-wrapper > div > div { position: relative; width: 100%; height: auto; }
+	.rm-wrapper > div > div { margin-bottom: 12px; box-shadow: inset 0 0 0 12px var(--paper), inset 0 0 0 13px var(--ink), inset 0 0 0 16px var(--paper), inset 0 0 0 17px var(--saffron), 0 4px 10px rgba(0, 0, 0, 0.35); }
+	.rm-container .rm-back,
+	.rm-container.rm-open .rm-cover,
+	.rm-container.rm-open .rm-right { transform: none; }
+	.rm-overlay, .rm-right .rm-front, .rm-close { display: none; }
+	.rm-button-open { display: none; }
+	.rm-note { position: static; display: inline-block; margin-top: 22px; }
+	.rm-container .rm-modal { position: fixed; width: 88%; max-width: 420px; left: 50%; margin: 0 0 0 -44%; transform: none; transition: opacity 0.3s; }
+	@media (min-width: 500px) { .rm-container .rm-modal { margin-left: -210px; } }
+	.rm-container.rm-in .rm-cover, .rm-container.rm-in .rm-right, .rm-container.rm-in .rm-wrapper { transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.rm-wrapper, .rm-wrapper > div, .rm-modal { transition-duration: 0.01s; transition-delay: 0s !important; }
+}
